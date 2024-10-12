@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins,'Roboto', sans-serif;
+    background-color: #000000;
+}
+.navbar-brand{
+    float: left !important;
+    height: 110px !important;
+    width: 110px !important;
+}
+
+
+.logoLeft{
+    float: left;
+}
+
+.logo{
+    height: 105px !important;
+    width: 105px !important;
+}
+
+.PrincipalNav{
+    background-color: #043b5a;
+}

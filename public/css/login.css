@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #000;
+}
+
+.LoginBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#LoginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 300px;
+    border-radius: 10px;
+    border: 2px solid grey;
+    color: white;
+    background-color: #000;
+}
+
+.LoginBtn {
+    width: 100%;
+}
+
+.RegisterBtn{
+
+    width: 100%;
+
+}
+
+.Error{
+    margin: auto;
+}
+
+.PasswordError .LoginError {
+    color: #e0e0e0;
+    font-family: Poppins;
+    font-weight: 700;
+    padding: 5px;
+}
+.form_check_box {
+    color: white;
+}
+
+.RememberText{
+    font-weight:200;
+    font-size: small;
+}
