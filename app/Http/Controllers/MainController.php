@@ -12,4 +12,9 @@ class MainController extends Controller
     {
         return view('productsInsert');
     }
+
+    public function AdminGrid()
+    {
+        return view('AdminsGrid');
+    }
 }

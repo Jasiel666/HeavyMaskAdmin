@@ -14,3 +14,7 @@ Route::get('/shirts/{id}', [ShirtController::class, 'show'])->name('shirts.show'
 Route::get('/shirts/{id}/edit', [ShirtController::class, 'edit'])->name('shirts.edit');
 Route::put('/shirts/{id}', [ShirtController::class, 'update'])->name('shirts.update');
 Route::delete('/shirts/{id}', [ShirtController::class, 'destroy'])->name('shirts.destroy');
+
+// Admin-related routes
+
+Route::get('/AdminGrid',[MainController::class, 'AdminGrid']);

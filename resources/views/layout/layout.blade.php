@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/shop.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/shirtList.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/productInsert.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/Admin.css') }}" />
     <!-- In the <head> section -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -24,9 +25,9 @@
             <li class="nav-item">
                     <a href="{{ url('/') }}"><img class="logo" src="{{ asset('images/Heavy Mask Logo.png') }}" alt="Heavy Mask Logo" /></a>
              </li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Admins</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/AdminGrid') }}">Admins</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Users</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Products Insert</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/productsInsert') }}">Products Insert</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Orders</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Sales Board</a></li>
         </ul>
