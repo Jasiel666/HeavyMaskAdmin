@@ -20,11 +20,11 @@
 
     <div class="container" id="LoginContainer">
 
-    <form action="" method="post">
+    <form action="{{ route('Login.login') }}" method="post">
         {{csrf_field()}}
 
             <label for="UserName" class="UserName">User</label>
-            <input class="form-control mb-5" type="text" id="UserName" name="LoginEmail" placeholder="Insert your User Name" required />
+            <input class="form-control mb-5" type="text" id="UserName" name="LoginName" placeholder="Insert your User Name" required />
 
             <label for="PasswordHash" class="Password">Password</label>
             <input class="form-control mb-5" type="password" name="LoginPassword" id="PasswordHash" placeholder="Insert your Password" required />
@@ -34,6 +34,7 @@
                 <label class="form-check-label" for="remember">Remember me!</label>
             </div>
         </form>
+        <a class="/register" href="/register">Sign Admin</a>
         @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

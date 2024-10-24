@@ -17,4 +17,9 @@ class MainController extends Controller
     {
         return view('AdminsGrid');
     }
+
+    public function register()
+    {
+        return view('register');
+    }
 }

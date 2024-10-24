@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ShirtController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', [MainController::class, 'AdminLogin']);
 
@@ -18,3 +20,13 @@ Route::delete('/shirts/{id}', [ShirtController::class, 'destroy'])->name('shirts
 // Admin-related routes
 
 Route::get('/AdminGrid',[MainController::class, 'AdminGrid']);
+
+// Login routes
+
+Route::get('/login', [MainController::class, 'AdminLogin'])->name('AdminLogin');
+Route::post('/login', [LoginController::class, 'login'])->name('Login.login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('Login.logout');
+
+// Registration routes
+Route::get('/register', [MainController::class, 'register']);
+Route::post('/register', [RegisterController::class, 'register'])->name('Register.register');
