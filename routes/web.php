@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ShirtController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', [MainController::class, 'AdminLogin']);
 
 // Product-related routes
-Route::get('/productsInsert', [MainController::class, 'productsInsert']);
+Route::get('/productsInsert', [MainController::class, 'productsInsert'])->name('productsInsert');
 Route::post('/shirts', [ShirtController::class, 'store'])->name('Shirt.store');
 Route::get('/shirts/list', [ShirtController::class, 'index'])->name('shirts.index');
 Route::get('/shirts/{id}', [ShirtController::class, 'show'])->name('shirts.show');
@@ -19,11 +20,13 @@ Route::delete('/shirts/{id}', [ShirtController::class, 'destroy'])->name('shirts
 
 // Admin-related routes
 
-Route::get('/AdminGrid',[MainController::class, 'AdminGrid']);
+Route::get('/AdminGrid',[MainController::class, 'AdminGrid'])->name('AdminTable');
+Route::get('/AdminGrid', [AdminController::class, 'index'])->name('AdminsTable');
+
 
 // Login routes
 
-Route::get('/login', [MainController::class, 'AdminLogin'])->name('AdminLogin');
+Route::get('/login', [MainController::class, 'AdminLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('Login.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('Login.logout');
 

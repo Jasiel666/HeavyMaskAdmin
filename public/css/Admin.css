@@ -1,3 +1,11 @@
 .AdminsTable {
+    
     width: 80% !important;
+    margin: auto;
 }
+
+.AdminBody {
+    margin: auto;
+    width: 80%; /* Adjust as needed */
+}
+

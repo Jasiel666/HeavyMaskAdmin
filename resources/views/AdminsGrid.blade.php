@@ -1,11 +1,11 @@
 @extends('layout.layout')
 
-@section('title', 'productsInsert')
+@section('title', 'Admins List')
 
 @section('content')
 <div class="AdminBody">
     <h1>Admins</h1>
-<table class="AdminsTable table table-striped table-dark table-bordered rounded-table">
+    <table class="AdminsTable table table-striped table-dark table-bordered rounded-table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -13,24 +13,20 @@
                 <th>Permissions Type</th>
                 <th>Created At</th>
                 <th>Updated At</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        <tr>
-                    <td>1</td>
-                    <td>Jaasiel</td>
-                    <td>High</td>
-                    <td>14/10/24</td>
-                    <td>14/10/24</td>
-                    
-                    <td>
-                        jahslkdjals
-                    </td>
+            @foreach ($admins as $admin)
+                <tr>
+                    <td>{{ $admin->id }}</td>
+                    <td>{{ $admin->name }}</td>
+                    <td>{{ $admin->is_main_admin ? 'Main admin' : 'Normal admin' }}</td>
+                    <td>{{ $admin->created_at }}</td>
+                    <td>{{ $admin->updated_at }}</td>
                 </tr>
+            @endforeach
         </tbody>
     </table>
-   
-    
 </div>
 @endsection
+
