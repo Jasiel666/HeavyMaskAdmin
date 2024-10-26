@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/site.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/shop.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/shirtList.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/productInsert.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/Admin.css') }}" />

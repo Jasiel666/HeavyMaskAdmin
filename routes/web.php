@@ -21,7 +21,7 @@ Route::delete('/shirts/{id}', [ShirtController::class, 'destroy'])->name('shirts
 // Admin-related routes
 
 Route::get('/AdminGrid',[MainController::class, 'AdminGrid'])->name('AdminTable');
-Route::get('/AdminGrid', [AdminController::class, 'index'])->name('AdminsTable');
+Route::get('/AdminGrid', [AdminController::class, 'index'])->middleware('auth:admin')->name('AdminsTable');
 
 
 // Login routes
