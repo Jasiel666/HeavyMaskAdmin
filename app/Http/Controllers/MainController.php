@@ -18,6 +18,11 @@ class MainController extends Controller
         return view('AdminsGrid');
     }
 
+    public function UserGrid()
+    {
+        return view('UsersGrid');
+
+    }
     public function register()
     {
         return view('register');

@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ShirtController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [MainController::class, 'AdminLogin']);
 
@@ -20,9 +21,14 @@ Route::delete('/shirts/{id}', [ShirtController::class, 'destroy'])->name('shirts
 
 // Admin-related routes
 
-Route::get('/AdminGrid',[MainController::class, 'AdminGrid'])->name('AdminTable');
-Route::get('/AdminGrid', [AdminController::class, 'index'])->middleware('auth:admin')->name('AdminsTable');
-
+Route::get('/AdminsGrid',[MainController::class, 'AdminGrid'])->name('AdminTable');
+Route::get('/AdminGrid', [AdminController::class, 'index'])->name('AdminsTable');
+Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
+Route::get('/admins/create', [AdminController::class, 'create'])->name('admins.create');
+Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
+Route::get('/admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.edit');
+Route::put('/admins/{id}', [AdminController::class, 'update'])->name('admins.update');
+Route::delete('/admins/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
 
 // Login routes
 
@@ -33,3 +39,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('Login.logout');
 // Registration routes
 Route::get('/register', [MainController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'register'])->name('Register.register');
+
+//User Routes
+Route::get('/UserTable', [MainController::class, 'UserGrid'])->name('UserTable');
+Route::get('/UsersTable', [UserController::class, 'index'])->name('UsersTable');
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');

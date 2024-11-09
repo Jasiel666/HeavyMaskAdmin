@@ -25,7 +25,7 @@
                     <a href="{{ url('/') }}"><img class="logo" src="{{ asset('images/Heavy Mask Logo.png') }}" alt="Heavy Mask Logo" /></a>
              </li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/AdminGrid') }}">Admins</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/UsersTable') }}">Users</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/productsInsert') }}">Products Insert</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Orders</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Sales Board</a></li>
