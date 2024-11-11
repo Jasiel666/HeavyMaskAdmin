@@ -27,7 +27,7 @@
             <li class="nav-item"><a class="nav-link" href="{{ url('/AdminGrid') }}">Admins</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/UsersTable') }}">Users</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/productsInsert') }}">Products Insert</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Orders</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/Order') }}">Orders</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Sales Board</a></li>
         </ul>
     </nav>

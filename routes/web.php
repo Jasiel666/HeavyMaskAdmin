@@ -7,6 +7,8 @@ use App\Http\Controllers\ShirtController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+
 
 Route::get('/', [MainController::class, 'AdminLogin']);
 
@@ -46,3 +48,7 @@ Route::get('/UsersTable', [UserController::class, 'index'])->name('UsersTable');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+//Order Routes
+
+Route::get('/Order', [OrderController::class, 'index'])->name('OrderTable');
