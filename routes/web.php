@@ -23,14 +23,25 @@ Route::delete('/shirts/{id}', [ShirtController::class, 'destroy'])->name('shirts
 
 // Admin-related routes
 
-Route::get('/AdminsGrid',[MainController::class, 'AdminGrid'])->name('AdminTable');
+// Display the grid of admins (GET request, calls 'index' in AdminController)
 Route::get('/AdminGrid', [AdminController::class, 'index'])->name('AdminsTable');
 Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
+
+// Show the form for creating a new admin (GET request, calls 'create' in AdminController)
 Route::get('/admins/create', [AdminController::class, 'create'])->name('admins.create');
+
+// Store a new admin in the database (POST request, calls 'store' in AdminController)
 Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
+
+// Show the form for editing an admin (GET request, calls 'edit' in AdminController)
 Route::get('/admins/{id}/edit', [AdminController::class, 'edit'])->name('admins.edit');
+
+// Update the specified admin (PUT request, calls 'update' in AdminController)
 Route::put('/admins/{id}', [AdminController::class, 'update'])->name('admins.update');
+
+// Delete the specified admin (DELETE request, calls 'destroy' in AdminController)
 Route::delete('/admins/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
+
 
 // Login routes
 
