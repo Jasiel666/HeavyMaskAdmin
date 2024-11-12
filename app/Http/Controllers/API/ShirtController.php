@@ -1,25 +1,26 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Models\Shirt;
-
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 class ShirtController extends Controller
 {
     public function index()
     {
         $shirts = Shirt::all();
-        return view('shirtsList', ['shirts' => $shirts]);
+        return response()->json($shirts);
     }
 
     public function show($id)
     {
         $shirt = Shirt::findOrFail($id);
-        return view('showShirt', compact('shirt'));
+        return response()->json($shirt);
     }
+
     public function store(Request $request)
     {
-       
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -31,26 +32,9 @@ class ShirtController extends Controller
             'ImageUrl2' => 'nullable|string',
         ]);
 
-      
-        $shirt = Shirt::create([
-            'name' => $validatedData['name'],
-            'description' => $validatedData['description'] ?? null,
-            'price' => $validatedData['price'],
-            'category_id' => $validatedData['category_id'],
-            'brand_id' => $validatedData['brand_id'],
-            'ImageUrl' => $validatedData['ImageUrl'] ?? null,
-            'ImageUrl1' => $validatedData['ImageUrl1'] ?? null,
-            'ImageUrl2' => $validatedData['ImageUrl2'] ?? null,
-        ]);
+        $shirt = Shirt::create($validatedData);
 
-       
-        return redirect()->back()->with('success', 'Shirt created successfully!');
-    }
-
-    public function edit($id)
-    {
-        $shirt = Shirt::findOrFail($id);
-        return view('editShirt', compact('shirt'));
+        return response()->json(['message' => 'Shirt created successfully!', 'shirt' => $shirt], 201);
     }
 
     public function update(Request $request, $id)
@@ -69,7 +53,7 @@ class ShirtController extends Controller
         $shirt = Shirt::findOrFail($id);
         $shirt->update($validatedData);
 
-        return redirect()->route('shirts.index')->with('success', 'Shirt updated successfully!');
+        return response()->json(['message' => 'Shirt updated successfully!', 'shirt' => $shirt]);
     }
 
     public function destroy($id)
@@ -77,15 +61,13 @@ class ShirtController extends Controller
         $shirt = Shirt::findOrFail($id);
         $shirt->delete();
 
-        return redirect()->route('shirts.index')->with('success', 'Shirt deleted successfully!');
+        return response()->json(['message' => 'Shirt deleted successfully!']);
     }
 
     public function showShirtInfo($id)
     {
         $shirt = Shirt::findOrFail($id);
-        return view('info', compact('shirt'));
+        return response()->json($shirt);
     }
-    
 }
-
 
