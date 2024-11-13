@@ -15,12 +15,15 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+   public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('admin')->check()) {
-            return redirect('/login');
+        if (!session('admin_api_token')) {
+            return redirect()->route('login')
+                ->withErrors('Please login to continue.');
         }
 
         return $next($request);
     }
+
+    
 }
