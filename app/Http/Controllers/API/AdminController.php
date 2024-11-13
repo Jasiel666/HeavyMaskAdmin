@@ -132,20 +132,36 @@ class AdminController extends Controller
     ]);
 }
 
-    // Delete the specified admin from the database
-    public function destroy($id)
-    {
-        // Check if the authenticated user is an admin
-        if (Auth::user()->role !== 'admin') {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+public function destroy($id)
+{
+    try {
+        // Retrieve the admin by ID, or fail if it doesn't exist
+        $admin = Admin::findOrFail($id);
 
-        $admin = Admin::findOrFail($id); // Retrieve the admin by ID
-        $admin->delete(); // Delete the admin
+        // Check if the current authenticated user has permission to delete this admin
+        
 
-        // Return a success message
+        // Proceed to delete the admin
+        $admin->delete();
+
+        // Return success response
         return response()->json([
             'message' => 'Admin deleted successfully!'
-        ]);
+        ], 200); 
+       
+
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        // Handle case where the admin is not found
+        return response()->json([
+            'error' => 'Admin not found.'
+        ], 404);
+
+    } catch (\Exception $e) {
+        // Handle any other errors (e.g., database issues)
+        return response()->json([
+            'error' => 'Failed to delete admin. ' . $e->getMessage()
+        ], 500); 
     }
+    
+}
 }

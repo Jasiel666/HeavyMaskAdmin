@@ -11,15 +11,9 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        try {
-            $user = JWTAuth::parseToken()->authenticate();
-
-            // Check if the user is an admin
-            if (!$user || $user->role !== 'admin') {
-                return response()->json(['error' => 'Not authorized'], 403); 
-            }
-        } catch (JWTException $e) {
-            return response()->json(['error' => 'Invalid token'], 400);
+        if (!session('admin_api_token')) {
+            return redirect()->route('login')
+                ->withErrors('Please login to continue.');
         }
 
         return $next($request);
