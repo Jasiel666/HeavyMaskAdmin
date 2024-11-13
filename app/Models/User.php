@@ -35,23 +35,19 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     /**
-     * Get the user's active tokens.
+     * Set the user's password with auto-hashing.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param string $password
      */
-    public function tokens()
+    public function setPasswordAttribute($password)
     {
-        return $this->morphMany(\Laravel\Sanctum\PersonalAccessToken::class, 'tokenable');
+        $this->attributes['password'] = bcrypt($password);
     }
 }

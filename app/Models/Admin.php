@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable; // Correct class to extend
 use Illuminate\Notifications\Notifiable;
 
+use Laravel\Sanctum\HasApiTokens;
 class Admin extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, Notifiable, HasFactory;
 
     /**
      * The table associated with the model.
@@ -45,6 +46,7 @@ class Admin extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'password' => 'hashed', // Auto-hash the password when set
+        'is_main_admin' => 'boolean',
+        'password' => 'hashed',
     ];
 }
