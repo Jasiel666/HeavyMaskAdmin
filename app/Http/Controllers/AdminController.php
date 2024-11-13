@@ -123,17 +123,33 @@ class AdminController extends Controller
                 ->withErrors(['error' => 'Failed to update admin']);
         }
     }
-
     public function destroy($id)
-    {
-        $token = session('api_token');  
+{
+    $token = session('admin_api_token'); 
 
-        $response = Http::withToken($token)->delete("http://127.0.0.1:8000/api/admins/{$id}");
-
-        if ($response->successful()) {
-            return redirect()->route('AdminsTable')->with('success', 'Admin deleted successfully!');
-        }
-
-        return redirect()->back()->withErrors('Failed to delete admin.');
+    // Check if the token exists; if not, prompt login
+    if (!$token) {
+        return redirect()->route('login')->withErrors('Session expired. Please log in again.');
     }
+
+    // Proceed with delete request if token is present
+    $response = Http::withToken($token)->delete("http://127.0.0.1:8000/api/admins/{$id}");
+
+    // Log the API response
+    Log::info('API Response:', [
+        'status' => $response->status(),
+        'body' => $response->body(),
+    ]);
+
+    // Handle the response
+    if ($response->successful()) {
+        return redirect()->route('AdminsTable')->with('success', 'Admin deleted successfully!');
+    } elseif ($response->status() === 403) {
+        return redirect()->back()->withErrors('Unauthorized action. You are not allowed to delete admins.');
+    }
+
+    Log::error('Failed to delete admin', ['status' => $response->status(), 'body' => $response->body()]);
+    return redirect()->back()->withErrors('Failed to delete admin. Please try again later.');
+}
+    
 }
