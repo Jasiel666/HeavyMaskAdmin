@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
    
@@ -25,14 +26,22 @@ class AdminController extends Controller
     {
         try {
             $response = Http::withToken(session('admin_api_token'))
-                ->get(config('app.api_url') . '/admins');
+            ->get(config('app.api_url') . '/admins');
 
+        if ($response->successful()) {
+            return view('AdminsGrid', [
+                'admins' => $response->json()['data'] ?? [],
+                'isMainAdmin' => Auth::guard('admin')->check() && Auth::guard('admin')->user()->is_main_admin
+            ]);
+        }
             // Log the response for debugging
             Log::info('API Response:', [
                 'status' => $response->status(),
                 'body' => $response->json(),
                 'headers' => $response->headers()
             ]);
+            
+            
 
             if ($response->successful()) {
                 return view('AdminsGrid', [
@@ -45,6 +54,8 @@ class AdminController extends Controller
                 'status' => $response->status(),
                 'body' => $response->body()
             ]);
+
+           
 
             return redirect()->back()->withErrors('Failed to fetch admins data');
         } catch (\Exception $e) {
@@ -127,21 +138,18 @@ class AdminController extends Controller
 {
     $token = session('admin_api_token'); 
 
-    // Check if the token exists; if not, prompt login
     if (!$token) {
         return redirect()->route('login')->withErrors('Session expired. Please log in again.');
     }
 
-    // Proceed with delete request if token is present
     $response = Http::withToken($token)->delete("http://127.0.0.1:8000/api/admins/{$id}");
 
-    // Log the API response
     Log::info('API Response:', [
         'status' => $response->status(),
         'body' => $response->body(),
     ]);
 
-    // Handle the response
+   
     if ($response->successful()) {
         return redirect()->route('AdminsTable')->with('success', 'Admin deleted successfully!');
     } elseif ($response->status() === 403) {

@@ -14,7 +14,7 @@ class Admin extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'admins'; // Explicitly define the table name (lowercase if your table follows convention)
+    protected $table = 'Admins'; // Explicitly define the table name (lowercase if your table follows convention)
 
     /**
      * The attributes that are mass assignable.
