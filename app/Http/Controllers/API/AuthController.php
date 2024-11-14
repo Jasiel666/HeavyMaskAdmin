@@ -19,24 +19,24 @@ class AuthController extends Controller
             'LoginName' => 'required',
             'LoginPassword' => 'required|min:8',
         ]);
-
+    
         $admin = Admin::where('name', $request->LoginName)->first();
-
+    
         if (!$admin || !Hash::check($request->LoginPassword, $admin->password)) {
             return response()->json([
                 'message' => 'Invalid credentials'
             ], 401);
         }
-
-        // Create token
+    
+        // Store the token in session
         $token = $admin->createToken('admin-token')->plainTextToken;
-
+        session(['admin_api_token' => $token]);
+    
         return response()->json([
             'token' => $token,
             'admin' => $admin
         ]);
     }
-
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
