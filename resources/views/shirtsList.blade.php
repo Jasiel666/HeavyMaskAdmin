@@ -5,7 +5,7 @@
 @section('content')
 <div class="shirtsContainer">
 
-    <h1>Shirts List</h1>
+    <h1 style="color: whitesmoke; font-weight: 700;">Shirts List</h1>
 
     @if (session('success'))
         <div class="alert alert-success">

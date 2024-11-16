@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="AdminBody">
-<h1>Orders</h1>
+<h1 style="color: whitesmoke; font-weight: 700;">Orders</h1>
 <table class="AdminsTable  table table-striped table-dark table-bordered rounded-table">
         <thead>
             <tr>

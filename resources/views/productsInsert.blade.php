@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="InsertBody"> 
-    <h1>Insert Products</h1>
+    <h1 style="color: whitesmoke; font-weight: 700;">Insert Products</h1>
     <div class="container" id="InsertContainer">
 
         <form id="productForm" method="post" enctype="multipart/form-data"  action="{{ route('Shirt.store') }}"> <!-- Added enctype here -->

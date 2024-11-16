@@ -31,10 +31,10 @@ class LoginController extends Controller
             if ($response->successful()) {
                 $data = $response->json();
                 
-                // Store token in session
+              
                 session(['admin_api_token' => $data['token']]);
                 
-                // Create or update admin in local database
+                
                 $adminData = $data['admin'];
                 
                 $admin = Admin::updateOrCreate(
@@ -47,10 +47,10 @@ class LoginController extends Controller
                     ]
                 );
 
-                // Login the admin using Laravel's authentication
+                
                 Auth::guard('admin')->login($admin);
 
-                // For debugging
+              
                 Log::info('Admin Login', [
                     'admin_id' => $admin->id,
                     'is_main_admin' => $admin->is_main_admin,
@@ -60,7 +60,7 @@ class LoginController extends Controller
                 return redirect()->route('productsInsert');
             }
 
-            // For debugging failed response
+         
             Log::error('Login Failed Response', [
                 'status' => $response->status(),
                 'body' => $response->json()
@@ -88,16 +88,16 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         try {
-            // Call API logout endpoint if token exists
+           
             if (session()->has('admin_api_token')) {
                 Http::withToken(session('admin_api_token'))
                     ->post('http://127.0.0.1:8000/api/logout');
             }
 
-            // Logout from Laravel's authentication
+            
             Auth::guard('admin')->logout();
 
-            // Clear local session
+          
             session()->forget(['admin_api_token', 'admin']);
             $request->session()->invalidate();
             $request->session()->regenerateToken();
@@ -111,7 +111,7 @@ class LoginController extends Controller
         }
     }
 
-    // Add this debug method to check authentication status
+    
     public function checkAuthStatus()
     {
         return response()->json([

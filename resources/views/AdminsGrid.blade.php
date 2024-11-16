@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="AdminBody">
-    <!-- Debug information -->
+    
     @if(Auth::guard('admin')->check())
         <div class="alert alert-info">
             Logged in as: {{ Auth::guard('admin')->user()->name }}<br>
@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <h1>Admins</h1>
+    <h1 style="color: whitesmoke; font-weight: 700;">Admins</h1>
 
     <div class="mb-3">
         <a href="{{ route('admins.create') }}" class="btn btn-success">Create New Admin</a>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="AdminBody">
-    <h1>Edit Admin</h1>
+    <h1 style="color: whitesmoke; font-weight: 700;">Edit Admin</h1>
     
     @if ($errors->any())
         <div class="alert alert-danger">

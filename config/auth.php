@@ -56,7 +56,7 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        'admins' => [ // New provider for Admins
+        'admins' => [ 
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
@@ -80,7 +80,7 @@ return [
             'throttle' => 60,
         ],
 
-        'admins' => [ // New settings for Admins
+        'admins' => [ 
             'provider' => 'admins',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,

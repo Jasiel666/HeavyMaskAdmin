@@ -9,7 +9,7 @@
     <p><strong>Status:</strong> {{ $order->status }}</p>
     <p><strong>Total Price:</strong> ${{ $order->total_price }}</p>
 
-    <h2>Items in this Order</h2>
+    <h2 style="color: whitesmoke; font-weight: 700;">Items in this Order</h2>
     <table class="AdminsTable table table-striped table-dark table-bordered rounded-table">
         <thead>
             <tr>

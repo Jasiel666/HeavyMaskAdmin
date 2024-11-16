@@ -21,7 +21,7 @@
     <div class="LoginBody">
         <div class="container" id="LoginContainer">
             <form action="{{ route('Register.register') }}" method="post">
-                @csrf <!-- Always use CSRF for protection -->
+                @csrf 
                 
                 <label for="username" class="UserName">Username</label>
                 <input class="form-control mb-3" type="text" id="username" name="username" placeholder="Insert your Username" required>

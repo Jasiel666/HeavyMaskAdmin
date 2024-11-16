@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Shirt</h1>
+        <h1 style="color: whitesmoke; font-weight: 700;">Edit Shirt</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">
