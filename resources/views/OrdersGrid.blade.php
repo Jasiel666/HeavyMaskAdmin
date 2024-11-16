@@ -20,9 +20,13 @@
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->user_id }}</td>
+                    @if($order->status == 'Pending')
+                    <td style="background-color: #d1a200;">{{ $order->status }}</td>
+                    @else
                     <td>{{ $order->status }}</td>
+                    @endif
                     <td>{{ $order->total_price}}</td>
-                    <td><div class="btn btn-primary">See details</div></td>
+                    <td><a href="{{ route('OrderDetails.show', $order->id) }}" class="btn btn-primary">View details</a></td>
                 </tr>
             @endforeach
         </tbody>
