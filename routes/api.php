@@ -4,6 +4,7 @@ use App\Http\Controllers\API\ShirtController;
 use App\Http\Controllers\API\AdminController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\OrderController;
 
 // Public routes
 Route::post('/login', [AuthController::class, 'login']);
@@ -38,4 +39,10 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
         Route::get('/', [UserController::class, 'index']);
         Route::delete('/{id}', [UserController::class, 'destroy']);
     });
+
+    //Orders route
+    Route::prefix('orders')->group(function(){
+        Route::post('/', [OrderController::class, 'saveOrder']);
+    });
+    
 });
