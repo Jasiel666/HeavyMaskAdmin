@@ -23,7 +23,7 @@ class LoginController extends Controller
         ]);
 
         try {
-            $response = Http::post('https://jasiel666.github.io/HeavyMaskAdmin/api/login', [
+            $response = Http::post('http://127.0.0.1:8000/api/login', [
                 'LoginName' => $request->LoginName,
                 'LoginPassword' => $request->LoginPassword,
             ]);
@@ -91,7 +91,7 @@ class LoginController extends Controller
            
             if (session()->has('admin_api_token')) {
                 Http::withToken(session('admin_api_token'))
-                    ->post('https://jasiel666.github.io/HeavyMaskAdmin/api/logout');
+                    ->post('http://127.0.0.1:8000/api/logout');
             }
 
             

@@ -52,7 +52,7 @@ class ShirtController extends Controller
         $validatedData['ImageUrl2'] = $imageUrl2;
 
 
-        $response = Http::withToken($token)->post('https://jasiel666.github.io/HeavyMaskAdmin/api/shirts', $validatedData);
+        $response = Http::withToken($token)->post('http://127.0.0.1:8000/api/shirts', $validatedData);
         
         if ($response->successful()) {
             return redirect()->route('shirts.index')->with('success', 'Shirt created successfully!');
@@ -125,7 +125,7 @@ private function uploadImage($image)
         }
 
         // Send the PUT request to update the shirt
-        $response = Http::withToken($token)->put("https://jasiel666.github.io/HeavyMaskAdmin/api/shirts/{$id}", $validatedData);
+        $response = Http::withToken($token)->put('http://127.0.0.1:8000/api/shirts/{$id}', $validatedData);
         
         if ($response->successful()) {
             return redirect()->route('shirts.index')->with('success', 'Shirt updated successfully!');
@@ -153,7 +153,7 @@ public function destroy($id)
         }
 
         // Send the DELETE request to remove the shirt
-        $response = Http::withToken($token)->delete("https://jasiel666.github.io/HeavyMaskAdmin/api/shirts/{$id}");
+        $response = Http::withToken($token)->delete('http://127.0.0.1:8000/api/shirts/{$id}');
         
         if ($response->successful()) {
             return redirect()->route('shirts.index')->with('success', 'Shirt deleted successfully!');
