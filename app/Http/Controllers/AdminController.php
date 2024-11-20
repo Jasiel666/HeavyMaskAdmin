@@ -85,7 +85,7 @@ class AdminController extends Controller
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json'
-            ])->post('http://127.0.0.1:8000/api/admins', $validatedData);
+            ])->post('https://jasiel666.github.io/HeavyMaskAdmin/api/admins', $validatedData);
     
             if ($response->successful()) {
                 return redirect()->route('AdminsTable')
@@ -120,7 +120,7 @@ class AdminController extends Controller
 
         try {
             $response = Http::withToken(session('admin_api_token'))
-                ->put("http://127.0.0.1:8000/api/admins/{$id}", $validatedData);
+                ->put("https://jasiel666.github.io/HeavyMaskAdmin/api/admins/{$id}", $validatedData);
 
             if ($response->successful()) {
                 return redirect()->route('AdminsTable')
@@ -142,7 +142,7 @@ class AdminController extends Controller
         return redirect()->route('login')->withErrors('Session expired. Please log in again.');
     }
 
-    $response = Http::withToken($token)->delete("http://127.0.0.1:8000/api/admins/{$id}");
+    $response = Http::withToken($token)->delete("https://jasiel666.github.io/HeavyMaskAdmin/api/admins/{$id}");
 
     Log::info('API Response:', [
         'status' => $response->status(),
