@@ -61,3 +61,4 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 
 Route::get('/Order', [OrderController::class, 'index'])->name('OrderTable');
 Route::get('/orders/{id}', [OrderController::class, 'show'])->name('OrderDetails.show');
+
